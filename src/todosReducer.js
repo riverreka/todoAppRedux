@@ -44,7 +44,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo(state) {
       state.todoArray.push({
-        id: new Date().getTime,
+        id: new Date().getTime(),
         name: state.formInput.name,
         description: state.formInput.description,
         done: false,
@@ -70,6 +70,7 @@ const todoSlice = createSlice({
       saveCurrentState(state);
     },
     removeTodo(state, action) {
+      console.log("action", action.payload.id);
       state.todoArray.splice(getIndexOf(state, action.payload.id), 1);
       saveCurrentState(state);
     },

@@ -57,7 +57,7 @@ const Form = () => {
           checked={isChecked} />
         <label htmlFor="hide-done">Hide completed tasks</label>
       </p>
-      <p className="register-form--footnote">*Starred fields are mandatory</p>
+      <p className="register-form--footnote">* mandatory</p>
     </form>
   );
 };

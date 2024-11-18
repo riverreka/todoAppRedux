@@ -11,12 +11,14 @@ const TodoList = () => {
 
   const tasks = taskList.map(t => (
     <Task
-      key={t.id}
+      // key={t.id}
       id={t.id}
       title={t.name}
       done={t.done}
       description={t.description}
     />));
+
+    console.log(tasks);
 
   return (
     <ul className="tasks-container">

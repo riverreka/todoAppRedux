@@ -32,11 +32,15 @@ const Task = props => {
     }
   };
 
+  console.log(props.id);
+
   return (
-    <li className={props.done ? 'tasks-card-li complete-task' : 'tasks-card-li'} onClick={toggleHandler}>
-      <h3 className="task-header">{props.title}</h3>
-      <p className="task-p">{props.description}</p>
-      { props.done ? removeButton : editButton }
+    <li key={props.id} className={props.done ? 'tasks-card-li complete-task' : 'tasks-card-li'} onClick={toggleHandler}>
+      <div className='tasks-card-li-left'>
+        <h3 className="task-header">{props.title}</h3>
+        <p className="task-p">{props.description}</p>
+      </div>
+      <div className='tasks-card-li-right'>{ props.done ? removeButton : editButton }</div>
     </li>);
 };
 
