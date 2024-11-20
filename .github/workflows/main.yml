@@ -25,4 +25,15 @@ jobs:
         run: |
           yarn install
           yarn build
-          
+
+      - name: Deploy
+        shell: bash
+        env:
+          USER: ${{ secrets.SSH_USER }}
+          PASS: ${{ secrets.SSH_PASS }}
+        run: |
+          echo "==> Local build files:"
+          ls -lah build/
+          sshpass -p ${PASS} scp -r -o"StrictHostKeyChecking=no" build/* ${USER}@rekavida.com:/httpdocs/todo-redux/
+          echo "==> Remote files deployed:"
+          sshpass -p ${PASS} ssh -o"StrictHostKeyChecking=no" ${USER}@rekavida.com 'ls -lah /httpdocs/todo-redux/'
